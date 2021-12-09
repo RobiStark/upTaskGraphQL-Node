@@ -7,9 +7,9 @@ require('dotenv').config({path: 'variables.env'})
 
 const crearToken = (usuario, secreta, expiresIn) => {
     //console.log(usuario);
-    const { id, email } = usuario;
+    const { id, email, nombre } = usuario;
 
-    return jwt.sign({id, email}, secreta, {expiresIn})
+    return jwt.sign({id, email, nombre}, secreta, {expiresIn})
 } 
 
 const resolvers = {
@@ -71,7 +71,7 @@ const resolvers = {
 
             //Dar acceso a la app
             return {
-                token: crearToken(existeusuario, process.env.SECRET, '2hr')
+                token: crearToken(existeusuario, process.env.SECRET, '4hr')
             }
         },
 
