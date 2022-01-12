@@ -21,7 +21,7 @@ const server = new ApolloServer({
         if(token){
             try {;
                 const usuario = jwt.verify(token.replace('Bearer ', ''),process.env.SECRET);
-                console.log(usuario);                
+                //console.log(usuario);                
                 return(usuario);
             } catch (error) {
                 console.log(error);
@@ -30,6 +30,6 @@ const server = new ApolloServer({
     } 
 });
 
-server.listen().then(({url}) => {
+server.listen({port: process.env.PORT || 4000}).then(({url}) => {
     console.log(`Servidor listo en la URL ${url}`)
 })
